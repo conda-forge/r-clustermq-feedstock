@@ -1,4 +1,4 @@
-{% set version = "0.8.8" %}
+{% set version = "0.8.8.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set cran_mirror = 'https://cran.r-project.org' %}
@@ -12,12 +12,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/clustermq_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/clustermq/clustermq_{{ version }}.tar.gz
-  sha256: b58897868f0caf444ef8a11fc24ac5fd0d4bbf06c3a0f9d5fd71e76f7576de7e
+  sha256: 1f3c61fd6fde7c14a63209d89d61d120522ca00ff099fc3e1eb87b98076ea2f7
 
 build:
   noarch: generic
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -49,6 +49,7 @@ test:
 about:
   home: https://github.com/mschubert/clustermq
   license: Apache 2.0
+  license_file: LICENSE
   summary: Evaluate arbitrary function calls using workers on HPC schedulers in single line of
     code. All processing is done on the network without accessing the file system. Remote
     schedulers are supported via SSH.
