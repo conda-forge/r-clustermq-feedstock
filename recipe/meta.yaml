@@ -42,7 +42,7 @@ requirements:
   run:
     - zeromq
     - r-base
-    - {{native}}gcc-libs         # [win]
+    - {{ native }}gcc-libs         # [win]
     - r-r6
     - r-rcpp
     - r-narray
