@@ -50,6 +50,8 @@ requirements:
 test:
   requires:
     - r-testthat
+    - r-foreach
+    - r-dplyr
   source_files:
     - tests/
   commands:
