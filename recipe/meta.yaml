@@ -38,7 +38,6 @@ requirements:
     - r-rcpp
     - r-narray
     - r-progress
-    - r-purrr
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
@@ -46,7 +45,6 @@ requirements:
     - r-rcpp
     - r-narray
     - r-progress
-    - r-purrr
 
 test:
   requires:
