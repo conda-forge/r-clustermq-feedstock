@@ -14,24 +14,24 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
   host:
-    - zeromq
+    - zeromq                       # [not win]
     - r-base
     - r-r6
     - r-rcpp
@@ -39,7 +39,6 @@ requirements:
     - r-progress
     - r-purrr
   run:
-    - zeromq
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-r6
@@ -49,9 +48,17 @@ requirements:
     - r-purrr
 
 test:
+  requires:
+    - r-testthat
+    - r-foreach
+    - r-dplyr
+  source_files:
+    - tests/
   commands:
-    - $R -e "library('clustermq')"           # [not win]
-    - "\"%R%\" -e \"library('clustermq')\""  # [win]
+    - $R -e "library('clustermq')"                                           # [not win]
+    - $R -e "testthat::test_file('tests/testthat.R', stop_on_failure=TRUE)"  # [not win]
+    - "\"%R%\" -e \"library('clustermq')\""                                           # [win]
+    - "\"%R%\" -e \"testthat::test_file('tests/testthat.R', stop_on_failure=TRUE)\""  # [win]
 
 about:
   home: https://github.com/mschubert/clustermq
@@ -65,25 +72,3 @@ extra:
   recipe-maintainers:
     - conda-forge/r
     - nick-youngblut
-
-# Package: clustermq
-# Title: Evaluate Function Calls on HPC Schedulers (LSF, SGE, SLURM, PBS/Torque)
-# Version: 0.8.8.1
-# Authors@R: c( person('Michael', 'Schubert', email='mschu.dev@gmail.com', role = c('aut', 'cre', 'cph'), comment = c(ORCID='0000-0002-6862-5221') ), person('EMBL', role = c('cph', 'fnd')) )
-# Maintainer: Michael Schubert <mschu.dev@gmail.com>
-# Description: Evaluate arbitrary function calls using workers on HPC schedulers in single line of code. All processing is done on the network without accessing the file system. Remote schedulers are supported via SSH.
-# URL: https://github.com/mschubert/clustermq
-# BugReports: https://github.com/mschubert/clustermq/issues
-# Depends: R (>= 3.0.2)
-# Imports: narray, progress, purrr, R6, rzmq (>= 0.9.4), utils
-# License: Apache License (== 2.0) | file LICENSE
-# LazyData: true
-# Encoding: UTF-8
-# Suggests: devtools, dplyr, foreach, iterators, knitr, parallel, roxygen2 (>= 5.0.0), testthat, tools
-# VignetteBuilder: knitr
-# RoxygenNote: 6.1.1
-# NeedsCompilation: no
-# Packaged: 2019-12-18 08:29:04 UTC; mschu
-# Author: Michael Schubert [aut, cre, cph] (<https://orcid.org/0000-0002-6862-5221>), EMBL [cph, fnd]
-# Repository: CRAN
-# Date/Publication: 2019-12-18 10:10:02 UTC
