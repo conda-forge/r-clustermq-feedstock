@@ -34,17 +34,19 @@ requirements:
   host:
     - zeromq                       # [not win]
     - r-base
-    - r-r6
-    - r-rcpp
+    - r-globals
     - r-narray
     - r-progress
+    - r-r6
+    - r-rcpp
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-r6
-    - r-rcpp
+    - r-globals
     - r-narray
     - r-progress
+    - r-r6
+    - r-rcpp
 
 test:
   requires:
