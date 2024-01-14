@@ -1,4 +1,4 @@
-{% set version = "0.9.1" %}
+{% set version = "0.9.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/clustermq_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/clustermq/clustermq_{{ version }}.tar.gz
-  sha256: a9e1672e9ea6b41c6a26f40473e4c7b635e5930343c4f0b129eff997b94bd9a0
+  sha256: fbdab317160bb3dd877626fd8a42008cd3f205000b03d887e109f144fa331548
 
 build:
   merge_build_host: true  # [win]
@@ -34,17 +34,19 @@ requirements:
   host:
     - zeromq                       # [not win]
     - r-base
-    - r-r6
-    - r-rcpp
+    - r-globals
     - r-narray
     - r-progress
+    - r-r6
+    - r-rcpp
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-r6
-    - r-rcpp
+    - r-globals
     - r-narray
     - r-progress
+    - r-r6
+    - r-rcpp
 
 test:
   requires:
