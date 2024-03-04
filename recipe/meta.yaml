@@ -1,4 +1,4 @@
-{% set version = "0.9.3" %}
+{% set version = "0.9.4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/clustermq_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/clustermq/clustermq_{{ version }}.tar.gz
-  sha256: fbdab317160bb3dd877626fd8a42008cd3f205000b03d887e109f144fa331548
+  sha256: fd171eb567e348fec4fdf649884a2bf77b98e9c42c7a76ce6a74eac96a9c2bf3
 
 build:
   merge_build_host: true  # [win]
