@@ -29,9 +29,16 @@ requirements:
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
+    - pkg-config
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-globals                    # [build_platform != target_platform]
+    - r-narray                     # [build_platform != target_platform]
+    - r-progress                   # [build_platform != target_platform]
+    - r-r6                         # [build_platform != target_platform]
+    - r-rcpp                       # [build_platform != target_platform]
   host:
     - zeromq                       # [not win]
     - r-base
@@ -65,7 +72,6 @@ about:
   home: https://github.com/mschubert/clustermq
   license: Apache-2.0
   summary: Evaluate arbitrary function calls using workers on HPC schedulers in single line of code. All processing is done on the network without accessing the file system. Remote schedulers are supported via SSH.
-  license_family: APACHE
   license_file:
     - LICENSE
 
