@@ -1,4 +1,4 @@
-{% set version = "0.9.8" %}
+{% set version = "0.9.9" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/clustermq_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/clustermq/clustermq_{{ version }}.tar.gz
-  sha256: 9f31c545513f75543397fa76717fc64ef42f8832d0784131a13799bc0df9addd
+  sha256: c23e20975abfb28592e4cda90d64228b74c5d5b44e0e36fcf0d2bf3699bbca0d
 
 build:
   # Checking windows to see if it passes. Uncomment the line if it fails.
