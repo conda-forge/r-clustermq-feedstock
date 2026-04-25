@@ -41,7 +41,7 @@ requirements:
     - r-r6                         # [build_platform != target_platform]
     - r-rcpp                       # [build_platform != target_platform]
   host:
-    - zeromq                       # [not win]
+    - zeromq
     - r-base
     - r-globals
     - r-narray
